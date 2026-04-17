@@ -6,8 +6,8 @@ import { usePortfolioStore } from '@/lib/store'
 
 export default function HeroSection() {
   const heroRef = useRef<HTMLElement>(null)
-  const setSphereState = usePortfolioStore((s) => s.setSphereState)
-  const setSphereLarge = usePortfolioStore((s) => s.setSphereLarge)
+  const setSphereState = usePortfolioStore(s => s.setSphereState)
+  const setSphereLarge = usePortfolioStore(s => s.setSphereLarge)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,70 +24,67 @@ export default function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="flex flex-col md:flex-row items-center md:items-center min-h-[calc(100vh-80px)]"
+      className="flex flex-col md:flex-row items-center min-h-[calc(100vh-80px)]"
     >
-      <div className="w-full md:flex-[0_0_52%] pl-12 md:pl-16 pr-8 md:pr-10 py-10 md:pb-10">
+      {/* Left — text */}
+      <div className="w-full md:flex-[0_0_52%] pl-16 md:pl-20 pr-8 md:pr-10 py-10">
 
+        {/* Label chip */}
         <motion.div
-          className="flex items-center gap-4 mb-8"
+          className="inline-block border border-[#2a2520] px-3 py-1 mb-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
         >
-          <div className="w-5 h-px bg-[#2a2620]" />
-          <span className="text-[10px] tracking-[0.25em] uppercase text-[#3a3632]">
-            AI Engineer
+          <span className="text-[10px] tracking-[0.22em] uppercase text-[#4a4238]">
+            AI Engineer — Building what actually runs.
           </span>
         </motion.div>
 
+        {/* Headline */}
         <motion.h1
-          className="font-serif text-[clamp(28px,3vw,44px)] leading-[1.15] text-[#d8d0c4] font-normal mb-10"
-          initial={{ opacity: 0, y: 20 }}
+          className="font-serif text-[clamp(28px,3vw,46px)] leading-[1.12] text-[#e8e0d4] font-normal mb-8"
+          initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.8, delay: 0.15 }}
         >
-          I build the AI layer that products{' '}
-          <em className="text-[#9a8878]">actually run on</em>{' '}
-          — owned, trained, and deployed without relying on someone
-          else&apos;s API to stay up.
+          I build the AI layer<br />
+          that products{' '}
+          <em className="text-[#c4956a]">actually run on</em>
+          <br />
+          — owned, trained,<br />
+          deployed end&#8209;to&#8209;end.
         </motion.h1>
 
-        <motion.div
-          className="w-10 h-px bg-[#252220] mb-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-        />
-
+        {/* Subtext */}
         <motion.p
-          className="text-[11px] text-[#3e3c38] tracking-[0.06em] leading-loose mb-10"
+          className="text-[11px] text-[#4a4238] tracking-[0.06em] leading-loose mb-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          Fine-tuning &amp; inference. Infra you own.{' '}
-          <span className="text-[#5e5a54]">Currently:</span> AI lead on a VC-backed product.
+          Fine-tuning &amp; inference. Infra you own.<br />
+          <span className="text-[#5a5248]">Currently:</span> AI lead on a VC-backed product.
         </motion.p>
 
+        {/* CTAs */}
         <motion.div
-          className="flex items-center gap-6"
+          className="flex items-center gap-8"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.45 }}
         >
           <a
             href="/work"
-            className="inline-flex items-center gap-4 text-[10px] tracking-[0.2em] uppercase text-[#4a4642] hover:text-[#9a8878] transition-colors duration-300 group"
+            className="text-[11px] tracking-[0.18em] uppercase text-[#e8e0d4] hover:text-[#c4956a] transition-colors duration-300"
             onMouseEnter={() => setSphereState('work')}
             onMouseLeave={() => setSphereState('idle')}
           >
-            View work
-            <span className="w-7 h-px bg-current inline-block group-hover:translate-x-1 transition-transform duration-300" />
+            See my work →
           </a>
-
           <a
             href="/about"
-            className="inline-flex items-center gap-4 text-[10px] tracking-[0.2em] uppercase text-[#4a4642] hover:text-[#9a8878] transition-colors duration-300"
+            className="text-[11px] tracking-[0.18em] uppercase text-[#4a4238] hover:text-[#e8e0d4] transition-colors duration-300"
             onMouseEnter={() => setSphereState('about')}
             onMouseLeave={() => setSphereState('idle')}
           >
@@ -95,7 +92,24 @@ export default function HeroSection() {
           </a>
         </motion.div>
 
+        {/* Status */}
+        <motion.div
+          className="flex items-center gap-3 mt-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <div className="w-[5px] h-[5px] rounded-full bg-[#2ecc71] animate-pulse" />
+          <span className="text-[10px] tracking-[0.15em] uppercase text-[#3a3632]">
+            Open to opportunities
+          </span>
+        </motion.div>
+
       </div>
+
+      {/* Right — sphere (empty, SphereContainer handles it) */}
+      <div className="w-full md:flex-[0_0_48%] h-[40vh] md:h-[calc(100vh-80px)]" />
+
     </section>
   )
 }

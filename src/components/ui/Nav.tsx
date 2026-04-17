@@ -4,28 +4,28 @@ import Link from 'next/link'
 import { usePortfolioStore } from '@/lib/store'
 
 export default function Nav() {
-  const setSphereState = usePortfolioStore((s) => s.setSphereState)
+  const setSphereState = usePortfolioStore(s => s.setSphereState)
 
   return (
-    <nav className="flex justify-between items-center px-10 py-7">
+    <nav className="flex justify-between items-center px-12 py-7">
       <Link
         href="/"
-        className="text-[11px] tracking-[0.22em] uppercase text-[#4a4642] hover:text-[#9a8878] transition-colors duration-300"
+        className="font-serif italic text-[16px] text-[#6a6258] hover:text-[#c4956a] transition-colors duration-300"
         onMouseEnter={() => setSphereState('name')}
         onMouseLeave={() => setSphereState('idle')}
       >
         Khush Patel
       </Link>
-      <div className="flex gap-7">
+      <div className="flex gap-8">
         {[
-          { label: 'Work', state: 'work' },
-          { label: 'About', state: 'about' },
-        ].map(({ label, state }) => (
+          { label: 'Work', href: '/work', state: 'work' as const },
+          { label: 'About', href: '/about', state: 'about' as const },
+        ].map(({ label, href, state }) => (
           <Link
             key={label}
-            href={`/${label.toLowerCase()}`}
-            className="text-[11px] tracking-[0.14em] uppercase text-[#3a3632] hover:text-[#a09080] transition-colors duration-300"
-            onMouseEnter={() => setSphereState(state as 'work' | 'about')}
+            href={href}
+            className="text-[14px] tracking-[0.14em] uppercase text-[#6a6258] hover:text-[#e8e0d4] transition-colors duration-300"
+            onMouseEnter={() => setSphereState(state)}
             onMouseLeave={() => setSphereState('idle')}
           >
             {label}

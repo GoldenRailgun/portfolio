@@ -1,19 +1,16 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #080808;
-  --text-primary: #d8d0c4;
-  --text-muted: #3a3632;
-  --text-accent: #9a8878;
-  --border: #1e1c1a;
+  --bg: #0f0d0b;
+  --text-primary: #e8e0d4;
+  --text-muted: #4a4238;
+  --text-accent: #c4956a;
+  --border: #1e1a16;
+  --border-subtle: #2a2520;
   --status-green: #2ecc71;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 html {
   background: var(--bg);
@@ -22,16 +19,10 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-body {
-  min-height: 100vh;
-  background: var(--bg);
-}
-
-::selection {
-  background: var(--text-accent);
-  color: var(--bg);
-}
+body { min-height: 100vh; background: var(--bg); }
 
 .font-serif {
   font-family: Palatino, 'Palatino Linotype', 'Book Antiqua', Georgia, serif;
 }
+
+::selection { background: var(--text-accent); color: var(--bg); }
