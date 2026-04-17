@@ -3,8 +3,20 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import { usePortfolioStore } from '@/lib/store'
+import { usePathname } from 'next/navigation'
 
 export default function HeroSection() {
+
+
+  const pathname = usePathname()
+  const resetState = () => {
+    const base = '/' + pathname.split('/')[1]
+    const map: Record<string, 'idle' | 'work' | 'about' | 'contact' | 'name'> = {
+      '/': 'idle', '/work': 'work', '/about': 'about',
+    }
+    setSphereState(map[base] || 'idle')
+  }
+
   const heroRef = useRef<HTMLElement>(null)
   const setSphereState = usePortfolioStore(s => s.setSphereState)
   const setSphereLarge = usePortfolioStore(s => s.setSphereLarge)
@@ -78,7 +90,7 @@ export default function HeroSection() {
             href="/work"
             className="text-[11px] tracking-[0.18em] uppercase text-[#e8e0d4] hover:text-[#c4956a] transition-colors duration-300"
             onMouseEnter={() => setSphereState('work')}
-            onMouseLeave={() => setSphereState('idle')}
+            onMouseLeave={resetState}
           >
             See my work →
           </a>
@@ -86,7 +98,7 @@ export default function HeroSection() {
             href="/about"
             className="text-[11px] tracking-[0.18em] uppercase text-[#4a4238] hover:text-[#e8e0d4] transition-colors duration-300"
             onMouseEnter={() => setSphereState('about')}
-            onMouseLeave={() => setSphereState('idle')}
+            onMouseLeave={resetState}
           >
             About me
           </a>
