@@ -1,3 +1,4 @@
+import { main } from 'framer-motion/client'
 import Link from 'next/link'
 
 const projects = [
@@ -6,7 +7,18 @@ const projects = [
     category: 'NLP / Sentiment',
     name: 'VibeNewz',
     description: 'Fine-tuned RoBERTa and DeBERTa locally to classify news sentiment. Built the full inference pipeline — no third-party API, no external dependency.',
-    slug: 'vibenewz',
+    href: '/work/vibenewz',
+    external: false,
+    linkLabel: '→',
+  },
+  {
+    number: '002',
+    category: 'Computer Vision',
+    name: 'Droplet Detection Pipeline',
+    description: 'Classical CV pipeline for spray droplet sizing — D10/D50/D90 metrics. Chose contour detection over deep learning because the problem didn\'t need it. Otsu thresholding, circularity filtering, calibration-ready.',
+    href: 'https://huggingface.co/spaces/GoldenRailgun/droplet-detection-pipeline',
+    external: true,
+    linkLabel: 'Live demo →',
   },
 ]
 
@@ -27,12 +39,8 @@ export default function WorkPage() {
 
       {/* Project list */}
       <div className="flex flex-col">
-        {projects.map((project, i) => (
-          <Link
-            key={project.slug}
-            href={`/work/${project.slug}`}
-            className="group block border-t border-[#1e1a16] py-12 hover:border-[#2a2520] transition-colors duration-300"
-          >
+        {projects.map((project) => {
+          const inner = (
             <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-0">
 
               {/* Number + category */}
@@ -58,12 +66,28 @@ export default function WorkPage() {
 
               {/* Arrow */}
               <div className="md:ml-8 mt-2 md:mt-1 text-[#3a3632] group-hover:text-[#c4956a] transition-colors duration-300 text-[11px] tracking-[0.15em]">
-                →
+                {project.linkLabel ?? '→'}
               </div>
 
             </div>
-          </Link>
-        ))}
+          )
+          const rowClass = "group block border-t border-[#1e1a16] py-12 hover:border-[#2a2520] transition-colors duration-300"
+          return project.external ? (
+            <a
+              key={project.href}
+              href={project.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={rowClass}
+            >
+              {inner}
+            </a>
+          ) : (
+            <Link key={project.href} href={project.href} className={rowClass}>
+              {inner}
+            </Link>
+          )
+        })}
 
         {/* Bottom border */}
         <div className="border-t border-[#1e1a16]" />

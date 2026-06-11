@@ -77,7 +77,7 @@ export default function AboutPage() {
             Get in touch →
           </a>
           <a
-            href="https://github.com/yourusername"
+            href="https://github.com/GoldenRailgun"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[11px] tracking-[0.18em] uppercase text-[#4a4238] hover:text-[#e8e0d4] transition-colors duration-300"
@@ -85,7 +85,7 @@ export default function AboutPage() {
             GitHub
           </a>
           <a
-            href="https://linkedin.com/in/yourusername"
+            href="https://linkedin.com/in/khush-patel-mclaren"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[11px] tracking-[0.18em] uppercase text-[#4a4238] hover:text-[#e8e0d4] transition-colors duration-300"

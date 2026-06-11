@@ -26,8 +26,8 @@ export default function ParticleSphere() {
     const canvas = canvasRef.current
     if (!canvas) return
 
-    const W = canvas.parentElement?.offsetWidth || 500
-    const H = canvas.parentElement?.offsetHeight || 600
+    let W = canvas.parentElement?.offsetWidth || 500
+    let H = canvas.parentElement?.offsetHeight || 600
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true })
     renderer.setSize(W, H)
@@ -36,7 +36,18 @@ export default function ParticleSphere() {
 
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(55, W / H, 0.1, 100)
+
     camera.position.set(0, 0, 2.8)
+    const handleResize = () => {
+      W = canvas.parentElement?.offsetWidth || W
+      H = canvas.parentElement?.offsetHeight || H
+      renderer.setSize(W, H)
+      camera.aspect = W / H
+      camera.updateProjectionMatrix()
+      renderer.render(scene, camera)
+    }
+    const resizeObserver = new ResizeObserver(handleResize)
+    if (canvas.parentElement) resizeObserver.observe(canvas.parentElement)
 
     const shapes = {
       idle:    generateSphere(COUNT),
@@ -156,6 +167,7 @@ export default function ParticleSphere() {
     return () => {
       cancelAnimationFrame(animId)
       window.removeEventListener('mousemove', handleMouse)
+      resizeObserver.disconnect()
       renderer.dispose()
       geo.dispose()
       mat.dispose()
