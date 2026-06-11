@@ -26,7 +26,7 @@ export default function SphereContainer() {
     <div
       className={`fixed z-50 pointer-events-none transition-all duration-700 ease-in-out ${
         sphereLarge
-          ? 'bottom-0 right-0 w-[48%] h-[calc(100vh-80px)]'
+          ? 'bottom-4 right-4 w-[100px] h-[100px] opacity-50 md:opacity-100 md:bottom-0 md:right-0 md:w-[48%] md:h-[calc(100vh-80px)]'
           : 'bottom-6 right-6 w-[140px] h-[140px] opacity-60'
       }`}
     >

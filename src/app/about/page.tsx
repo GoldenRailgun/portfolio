@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen px-16 md:px-20 py-24 max-w-3xl">
+    <main className="min-h-screen px-8 md:px-20 py-24 max-w-3xl">
 
       {/* Opener */}
       <div className="mb-20">

@@ -24,7 +24,7 @@ const projects = [
 
 export default function WorkPage() {
   return (
-    <main className="min-h-screen px-16 md:px-20 py-24 max-w-3xl">
+    <main className="min-h-screen px-8 md:px-20 py-24 max-w-3xl">
 
       {/* Headline */}
       <div className="mb-20">
