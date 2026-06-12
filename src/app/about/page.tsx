@@ -55,7 +55,7 @@ export default function AboutPage() {
               <h3 className="font-serif text-[16px] text-[#e8e0d4] font-normal mb-3">
                 {p.title}
               </h3>
-              <p className="text-[11px] text-[#4a4238] leading-relaxed tracking-[0.02em]">
+              <p className="text-[11px] text-[#6a6258] leading-relaxed tracking-[0.02em]">
                 {p.body}
               </p>
             </div>

@@ -59,7 +59,7 @@ export default function WorkPage() {
                 <h2 className="font-serif text-[clamp(22px,2.5vw,36px)] text-[#e8e0d4] font-normal mb-3 group-hover:text-[#c4956a] transition-colors duration-500">
                   {project.name}
                 </h2>
-                <p className="text-[11px] text-[#4a4238] tracking-[0.04em] leading-relaxed max-w-xl">
+                <p className="text-[11px] text-[#6a6258] tracking-[0.04em] leading-relaxed max-w-xl">
                   {project.description}
                 </p>
               </div>

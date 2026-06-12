@@ -70,7 +70,7 @@ export default function HeroSection() {
 
         {/* Subtext */}
         <motion.p
-          className="text-[11px] text-[#4a4238] tracking-[0.06em] leading-loose mb-10"
+          className="text-[11px] text-[#6a6258] tracking-[0.06em] leading-loose mb-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.3 }}
