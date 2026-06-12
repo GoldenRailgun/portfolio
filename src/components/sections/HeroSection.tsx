@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { usePortfolioStore } from '@/lib/store'
 import { usePathname } from 'next/navigation'
 
@@ -39,7 +40,7 @@ export default function HeroSection() {
       className="flex flex-col md:flex-row items-center min-h-[calc(100vh-80px)]"
     >
       {/* Left — text */}
-      <div className="w-full md:flex-[0_0_52%] pl-16 md:pl-20 pr-8 md:pr-10 py-10">
+      <div className="w-full md:flex-[0_0_52%] pl-8 md:pl-20 pr-8 md:pr-10 py-10">
 
         {/* Label chip */}
         <motion.div
@@ -86,22 +87,22 @@ export default function HeroSection() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.45 }}
         >
-          <a
+          <Link
             href="/work"
             className="text-[11px] tracking-[0.18em] uppercase text-[#e8e0d4] hover:text-[#c4956a] transition-colors duration-300"
             onMouseEnter={() => setSphereState('work')}
             onMouseLeave={resetState}
           >
             See my work →
-          </a>
-          <a
+          </Link>
+          <Link
             href="/about"
             className="text-[11px] tracking-[0.18em] uppercase text-[#4a4238] hover:text-[#e8e0d4] transition-colors duration-300"
             onMouseEnter={() => setSphereState('about')}
             onMouseLeave={resetState}
           >
             About me
-          </a>
+          </Link>
         </motion.div>
 
         {/* Status */}
@@ -120,7 +121,7 @@ export default function HeroSection() {
       </div>
 
       {/* Right — sphere (empty, SphereContainer handles it) */}
-      <div className="w-full md:flex-[0_0_48%] h-[40vh] md:h-[calc(100vh-80px)]" />
+      <div className="hidden md:block md:flex-[0_0_48%] md:h-[calc(100vh-80px)]" />
 
     </section>
   )

@@ -71,7 +71,7 @@ export default function AboutPage() {
         </p>
         <div className="flex flex-wrap items-center gap-8">
           <a
-            href="mailto:your@email.com"
+            href="mailto:pakhushn@sheridancollege.ca"
             className="text-[11px] tracking-[0.18em] uppercase text-[#e8e0d4] hover:text-[#c4956a] transition-colors duration-300"
           >
             Get in touch →
